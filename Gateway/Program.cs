@@ -1,3 +1,4 @@
+using HotChocolate.AspNetCore;
 using HotChocolate.Fusion.Composition;
 using HotChocolate.Language;
 using HotChocolate.Skimmed.Serialization;
@@ -17,7 +18,7 @@ builder
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
-app.MapGraphQL();
+app.MapGraphQL().WithOptions(new GraphQLServerOptions { Tool = { Enable = true } });
 app.Run();
 
 internal class SchemaObservable : IObservable<GatewayConfiguration>
